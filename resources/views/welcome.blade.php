@@ -9,7 +9,9 @@
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.bunny.net/css?family=poppins:400,600&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 
     <!-- Styles -->
     @vite('resources/css/app.css')
@@ -67,7 +69,7 @@
                             <ul
                                 class="border-t w-full lg:w-max gap-3 pt-2 lg:pt-0 lg:pl-2 lg:border-t-0 lg:border-l flex flex-col lg:gap-0 lg:items-center lg:flex-row">
                                 <li class="flex w-full lg:max-w-max justify-center">
-                                    <button type="button" title="Start buying"
+                                    <button type="button"
                                         class="flex w-full py-3 px-6 rounded-md text-center transition border border-purple-600 bg-white bg-opacity-40 backdrop-blur-md lg:backdrop-blur-none lg:bg-opacity-0 lg:bg-transparent lg:border-transparent active:border-purple-400 justify-center max-w-lg lg:max-w-max">
                                         <span class="block text-gray-700 lg:text-white font-semibold">
                                             Login
@@ -94,8 +96,8 @@
 
     <div class="relative">
 
-        <img class="absolute inset-0 w-full h-full object-cover object-top" src="images/background2.webp" width="400"
-            height="500" alt="hero background image">
+        <img class="absolute inset-0 w-full h-full object-cover object-top"
+            src="{{ asset('assets/img/background.jpg') }}" width="400" height="500" alt="hero background image">
         <div aria-hidden="true" class="absolute inset-0 w-full h-full bg-purple-900 bg-opacity-30 backdrop-blur-sm">
         </div>
         <div class="relative container m-auto px-6 md:px-12 lg:px-6">
@@ -106,41 +108,13 @@
 
                 <form action="" class="w-full">
                     <div class="relative flex p-1 rounded-xl bg-white shadow-2xl md:p-2">
-                        <div id="catJobBox"
-                            class="hidden text-gray-600 relative md:flex justify-between items-center min-w-max select-none">
-                            <input type="checkbox" name="" id="toggleJobLstCat" class="peer hidden outline-none">
-                            <input type="text" name="" id="catJobName" value="Design"
-                                class="pl-3 w-full bg-white text-base font-medium cursor-pointer" readonly>
-                            <label for="toggleJobLstCat" class="absolute top-0 left-0 w-full h-full"></label>
-                            <span class="min-w-max">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path fill-rule="evenodd"
-                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </span>
-                            <div id="catJobLst"
-                                class="absolute transition-all duration-500 ease-in-out translate-y-10 opacity-0 invisible peer-checked:opacity-100 peer-checked:visible peer-checked:translate-y-1 top-full left-0 w-full bg-white bg-opacity-80 rounded-lg py-2">
-                                <ul class="flex flex-col w-full">
-                                    <li
-                                        class="cursor-default transition hover:bg-gray-100 hover:bg-opacity-80 flex px-5 py-2">
-                                        Design</li>
-                                    <li
-                                        class="cursor-default transition hover:bg-gray-100 hover:bg-opacity-80 flex px-5 py-2">
-                                        Development</li>
-                                    <li
-                                        class="cursor-default transition hover:bg-gray-100 hover:bg-opacity-80 flex px-5 py-2">
-                                        Marketing</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <input placeholder="Your favorite position" class="w-full p-4 outline-none text-gray-600"
+                        <input placeholder="Silahkan ketik yang ingin anda cari di website ini"
+                            class="w-full border-transparent focus:border-transparent focus:ring-0 p-4 text-gray-600"
                             type="text">
-                        <button type="button" title="Start buying"
-                            class="ml-auto py-3 px-6 rounded-lg text-center transition bg-gradient-to-br from-pink-500 to-purple-500 hover:to-purple-600 active:from-pink-700 focus:from-pink-600 md:px-12">
+                        <button type="button"
+                            class="ml-auto py-3 px-6 rounded-lg text-center transition bg-gradient-to-br from-green-800 to-green-100 hover:to-green-200 active:from-pink-700 focus:from-pink-600 md:px-12">
                             <span class="hidden text-white font-semibold md:block">
-                                Search
+                                Cari
                             </span>
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 mx-auto text-white md:hidden"
                                 fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -154,46 +128,116 @@
 
             <div class="pb-16">
                 <div class="md:px-12">
-                    <span class="block text-center font-medium text-pink-50">Trusted by your favorite giants</span>
+                    <h3 class="text-white text-center text-xl font-bold sm:text-2xl md:text-3xl">
+                        Tanaman Obat Desa Growong
+                    </h3>
                     <div class="mt-8 -mx-6 px-6 overflow-x-auto md:overflow-x-hidden">
-                        <div
-                            class="w-max flex justify-center flex-wrap items-center gap-4 md:w-auto md:gap-6 lg:gap-8">
-                            <div class="flex items-center">
-                                <img class="w-36 grayscale contrast-200 brightness-200"
-                                    src="images/clients/microsoft.png" alt="client logo" loading="lazy"
-                                    width="100" height="122">
-                            </div>
-                            <div class="flex items-center">
-                                <img class="w-28 grayscale contrast-200 brightness-200"
-                                    src="images/clients/grabyo.png" alt="client logo" loading="lazy" width="100"
-                                    height="219">
-                            </div>
-                            <div class="flex items-center">
-                                <img class="w-32 grayscale contrast-200 brightness-200"
-                                    src="images/clients/lifegroups.png" alt="client logo" loading="lazy"
-                                    width="100" height="219">
-                            </div>
-                            <div class="flex items-center">
-                                <img class="w-24 grayscale contrast-200 brightness-200" src="images/clients/lilly.png"
-                                    alt="client logo" loading="lazy" width="100" height="219">
-                            </div>
-                            <div class="flex items-center">
-                                <img class="w-28 grayscale contrast-200 brightness-200"
-                                    src="images/clients/grabyo.png" alt="client logo" loading="lazy" width="100"
-                                    height="219">
-                            </div>
-                            <div class="flex items-center">
-                                <img class="w-32 grayscale contrast-200 brightness-200"
-                                    src="images/clients/lifegroups.png" alt="client logo" loading="lazy"
-                                    width="100" height="219">
-                            </div>
-                        </div>
+                        <p class="text-center text-lg text-gray-600 dark:text-gray-300">Lorem ipsum dolor sit amet
+                            consectetur
+                            adipisicing elit. Praesentium tempore totam quisquam eveniet dolorum facere sed obcaecati
+                            repellat, optio, dignissimos iusto error! Consequuntur a ad quo, veniam reiciendis minima
+                            vitae.</p>
                     </div>
                 </div>
             </div>
         </div>
 
     </div>
+
+
+    <div class="bg-gray-50 dark:bg-gray-900 py-16">
+        <div class="container m-auto text-gray-600 dark:text-gray-300 md:px-12 xl:px-6">
+            <div class="mb-12 space-y-4 px-6 md:px-0">
+                <h2 class="text-center text-2xl font-bold text-gray-800 dark:text-white md:text-4xl">
+                    We have some fans.
+                </h2>
+                <p class="text-center">
+                    We don't like to brag, but we don't mind letting our customers do it for us. <br />
+                    Here are a few nice things folks have said about our themes over the years.
+                </p>
+            </div>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper pb-8">
+                    <div class="swiper-slide !bg-transparent px-6 md:px-0">
+                        <div
+                            class="p-2 border border-gray-100 dark:border-gray-700 rounded-3xl bg-white dark:bg-gray-800 shadow-2xl shadow-gray-600/10 dark:shadow-none md:mx-auto lg:w-10/12 xl:w-8/12">
+                            <div class="grid md:grid-cols-5">
+                                <img src="images/card.webp" class="md:col-span-2 h-full w-full rounded-2xl object-cover"
+                                    alt="image" width="640" height="422" loading="lazy" />
+                                <div class="md:col-span-3 mx-auto space-y-6 p-6 text-center sm:p-8">
+                                    <div class="mx-auto w-24">
+                                        <img src="images/clients/client-4.png" alt="company logo" height="400"
+                                            width="142" loading="lazy" />
+                                    </div>
+                                    <p>
+                                        <span class="font-serif">"</span> Lorem ipsum dolor sit amet consectetur
+                                        adipisicing elit. Quaerat repellat perspiciatis excepturi est. Non ipsum iusto
+                                        aliquam consequatur repellat provident, omnis ut, sapiente voluptates
+                                        veritatis cum deleniti repudiandae ad doloribus.
+                                        <span class="font-serif">"</span>
+                                    </p>
+                                    <h6 class="text-lg font-semibold leading-none">John Doe</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide !bg-transparent px-6 md:px-0">
+                        <div
+                            class="p-2 border border-gray-100 dark:border-gray-700 rounded-3xl bg-white dark:bg-gray-800 shadow-2xl shadow-gray-600/10 dark:shadow-none md:mx-auto lg:w-10/12 xl:w-8/12">
+                            <div class="grid md:grid-cols-5">
+                                <img src="images/card3.webp"
+                                    class="md:col-span-2 h-full w-full rounded-2xl object-cover" alt="image"
+                                    width="640" height="422" loading="lazy" />
+                                <div class="md:col-span-3 mx-auto space-y-6 p-6 text-center sm:p-8">
+                                    <div class="mx-auto w-24">
+                                        <img src="images/clients/client-3.png" alt="company logo" height="400"
+                                            width="142" loading="lazy" />
+                                    </div>
+                                    <p>
+                                        <span class="font-serif">"</span> Lorem ipsum dolor sit amet consectetur
+                                        adipisicing elit. Quaerat repellat perspiciatis excepturi est. Non ipsum iusto
+                                        aliquam consequatur repellat provident, omnis ut, sapiente voluptates
+                                        veritatis cum deleniti repudiandae ad doloribus.
+                                        <span class="font-serif">"</span>
+                                    </p>
+                                    <h6 class="text-lg font-semibold leading-none">John Doe</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide !bg-transparent px-6 md:px-0">
+                        <div
+                            class="p-2 border border-gray-100 dark:border-gray-700 rounded-3xl bg-white dark:bg-gray-800 shadow-2xl shadow-gray-600/10 dark:shadow-none md:mx-auto lg:w-10/12 xl:w-8/12">
+                            <div class="grid md:grid-cols-5">
+                                <img src="images/card2.webp"
+                                    class="md:col-span-2 h-full w-full rounded-2xl object-cover" alt="image"
+                                    width="640" height="422" loading="lazy" />
+                                <div class="md:col-span-3 mx-auto space-y-6 p-6 text-center sm:p-8">
+                                    <div class="mx-auto w-24">
+                                        <img src="images/clients/client-8.png" alt="company logo" height="400"
+                                            width="142" loading="lazy" />
+                                    </div>
+                                    <p>
+                                        <span class="font-serif">"</span> Lorem ipsum dolor sit amet consectetur
+                                        adipisicing elit. Quaerat repellat perspiciatis excepturi est. Non ipsum iusto
+                                        aliquam consequatur repellat provident, omnis ut, sapiente voluptates
+                                        veritatis cum deleniti repudiandae ad doloribus.
+                                        <span class="font-serif">"</span>
+                                    </p>
+                                    <h6 class="text-lg font-semibold leading-none">John Doe</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </div>
+
 
     <script>
         window.addEventListener('scroll', e => {
@@ -222,6 +266,19 @@
             navbar.style.paddingTop = '0px'
             navbar.style.paddingBottom = '0px'
         })
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper('.mySwiper', {
+                    spaceBetween: 15,
+                    slidesPerView: 3,
+                    pagination: {
+                        el: ".swiper-pagination",
+                        clickable: true
+                    },
+                    speed: 1000,
+                    loop: true,
+                }
     </script>
 </body>
 
