@@ -1,4 +1,4 @@
-@extends('layouts.frontend')
+@extends('layouts.web')
 
 @section('content')
     <header>
@@ -52,12 +52,12 @@
                             <ul
                                 class="border-t w-full lg:w-max gap-3 pt-2 lg:pt-0 lg:pl-2 lg:border-t-0 lg:border-l flex flex-col lg:gap-0 lg:items-center lg:flex-row">
                                 <li class="flex w-full lg:max-w-max justify-center">
-                                    <button type="button"
-                                        class="flex w-full py-3 px-6 rounded-md text-center transition border border-purple-600 bg-white bg-opacity-40 backdrop-blur-md lg:backdrop-blur-none lg:bg-opacity-0 lg:bg-transparent lg:border-transparent active:border-purple-400 justify-center max-w-lg lg:max-w-max">
-                                        <span class="block text-gray-700 lg:text-white font-semibold">
-                                            Login
-                                        </span>
-                                    </button>
+                                    <a href="{{ route('login') }}"><button type="button"
+                                            class="flex w-full py-3 px-6 rounded-md text-center transition border border-purple-600 bg-white bg-opacity-40 backdrop-blur-md lg:backdrop-blur-none lg:bg-opacity-0 lg:bg-transparent lg:border-transparent active:border-purple-400 justify-center max-w-lg lg:max-w-max">
+                                            <span class="block text-gray-700 lg:text-white font-semibold">
+                                                Login
+                                            </span>
+                                        </button></a>
                                 </li>
 
                                 {{-- <li class="flex w-full lg:max-w-max justify-center">

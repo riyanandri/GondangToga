@@ -5,13 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Plant extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'name',
         'slug',
+        'latin',
+        'indication',
+        'category_id',
     ];
 
     public function sluggable()
@@ -21,8 +24,8 @@ class Category extends Model
         ];
     }
 
-    public function plants()
+    public function category()
     {
-        return $this->hasMany(Plant::class);
+        return $this->belongsTo(Category::class);
     }
 }

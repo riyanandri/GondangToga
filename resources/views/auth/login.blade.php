@@ -1,48 +1,87 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+@extends('layouts.web')
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+@section('content')
+    <div class="m-auto xl:container px-12 py-12 sm:px-0 mx-auto">
+        <div class="mx-auto h-full sm:w-max">
+            <div class="m-auto  py-12">
+                <div class="space-y-4">
+                    <a href="{{ route('home') }}">
+                        <img src="{{ asset('assets/img/Logo-PPK-HIMAFA.png') }}" class="w-40" alt="logo" />
+                        {{-- <img src="images/logo.svg" class="w-40 hidden dark:block" alt="tailus logo" /> --}}
+                    </a>
+                </div>
+                <div class="mt-12 rounded-3xl border bg-gray-50 -mx-6 sm:-mx-10 p-8 sm:p-10">
+                    <h3 class="text-2xl font-semibold text-gray-700">Login</h3>
+                    {{-- <div class="mt-12 flex flex-wrap sm:grid gap-6 grid-cols-2">
+                        <button
+                            class="w-full h-11 rounded-full border border-gray-300/75 bg-white px-6 transition active:bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:hover:bg-gray-800 dark:hover:border-gray-700">
+                            <div class="w-max mx-auto flex items-center justify-center space-x-4">
+                                <img src="images/google.svg" class="w-5" alt="" />
+                                <span
+                                    class="block w-max text-sm font-semibold tracking-wide text-cyan-700 dark:text-white">With
+                                    Google</span>
+                            </div>
+                        </button>
+                        <button
+                            class="w-full h-11 rounded-full bg-gray-900 px-6 transition hover:bg-gray-800 focus:bg-gray-700 active:bg-gray-600 dark:bg-gray-700 dark:border dark:border-gray-600 dark:hover:bg-gray-800 dark:hover:border-gray-700">
+                            <div class="w-max mx-auto flex items-center justify-center space-x-4 text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5"
+                                    viewBox="0 0 16 16">
+                                    <path
+                                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                                </svg>
+                                <span class="block w-max text-sm font-semibold tracking-wide text-white">With Github</span>
+                            </div>
+                        </button>
+                    </div> --}}
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Alamat Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required
-                autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                    <form method="POST" action="{{ route('login') }}" class="mt-10 space-y-8">
+                        @csrf
+                        <div>
+                            <div
+                                class="relative before:absolute before:bottom-0 before:h-0.5 before:left-0 before:origin-right focus-within:before:origin-left before:right-0 before:scale-x-0 before:m-auto before:bg-sky-400 focus-within:before:!scale-x-100 focus-within:invalid:before:bg-red-400 before:transition before:duration-300">
+                                <input id="email" type="email" name="email" placeholder="Alamat Email"
+                                    :value="old('email')"
+                                    class="w-full bg-transparent pb-3  border-b border-gray-600 placeholder-gray-300 border-0 focus:ring-0  invalid:border-red-400 transition">
+                                @error('email')
+                                    <div class="mt-2 text-sm text-red-600 space-y-1">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col items-end">
+                            <div
+                                class="w-full relative before:absolute before:bottom-0 before:h-0.5 before:left-0 before:origin-right focus-within:before:origin-left before:right-0 before:scale-x-0 before:m-auto before:bg-sky-400 focus-within:before:!scale-x-100 focus-within:invalid:before:bg-red-400 before:transition before:duration-300">
+                                <input id="password" type="password" name="password" placeholder="Kata Sandi"
+                                    class="w-full bg-transparent pb-3  border-b border-gray-600 placeholder-gray-300 border-0 focus:ring-0  invalid:border-red-400 transition">
+                                @error('password')
+                                    <div class="mt-2 text-sm text-red-600 space-y-1">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <button type="reset" class="-mr-3 w-max p-3">
+                                <span class="text-sm tracking-wide text-sky-600">Lupa kata sandi?</span>
+                            </button>
+                        </div>
+
+                        <div>
+                            <button type="submit"
+                                class="w-full rounded-full bg-sky-500 h-11 flex items-center justify-center px-6 py-3 transition hover:bg-sky-600 focus:bg-sky-600 active:bg-sky-800">
+                                <span class="text-base font-semibold text-white">Login</span>
+                            </button>
+                            {{-- <button href="#" type="reset" class="-ml-3 w-max p-3">
+                                <span class="text-sm tracking-wide text-sky-600 dark:text-sky-400">Create new account</span>
+                            </button> --}}
+                        </div>
+                    </form>
+                </div>
+                <div class="border-t pt-12 text-gray-500">
+                    <div class="space-x-4 text-center">
+                        <span>&copy; GondangToga</span>
+                        <a href="#" class="text-sm hover:text-sky-900">Contact</a>
+                        <a href="#" class="text-sm hover:text-sky-900">Privacy & Terms</a>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required
-                autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox"
-                    class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ml-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+    </div>
+@endsection
