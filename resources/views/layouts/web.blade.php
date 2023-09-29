@@ -22,8 +22,11 @@
 
 <body class="font-sans antialiased">
 
+    @include('components.nav')
+
     @yield('content')
 
+    @include('components.footer')
     <script>
         window.addEventListener('scroll', e => {
             const header = document.querySelector('#header_')

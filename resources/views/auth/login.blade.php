@@ -1,4 +1,4 @@
-@extends('layouts.web')
+@extends('layouts.auth')
 
 @section('content')
     <div class="m-auto xl:container px-12 py-12 sm:px-0 mx-auto">
