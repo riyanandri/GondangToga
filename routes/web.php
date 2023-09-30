@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Livewire\Category;
+use App\Livewire\Category\Store;
+use App\Livewire\Category\Update;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +20,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 })->name('home');
+
+Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
+    Route::get('/categories', Category::class)->name('categories.index');
+    Route::get('/categories/create', Store::class)->name('categories.create');
+    Route::get('/categories/{id}/edit', Update::class)->name('categories.edit');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

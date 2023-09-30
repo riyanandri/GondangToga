@@ -1,12 +1,8 @@
-import "./bootstrap";
+import {
+    Livewire,
+    Alpine,
+} from "../../vendor/livewire/livewire/dist/livewire.esm";
 
-import Alpine from "alpinejs";
+Alpine.plugin(Clipboard);
 
-import Swiper from "swiper";
-import { Navigation, Pagination } from "swiper/modules";
-
-Swiper.use([Navigation, Pagination]);
-
-window.Alpine = Alpine;
-
-Alpine.start();
+Livewire.start();

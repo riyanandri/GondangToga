@@ -2,27 +2,40 @@
 
 namespace App\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    use HasFactory;
+    use HasFactory,Sluggable;
+
+    const TABLE = 'categories';
+
+    protected $table = self::TABLE;
 
     protected $fillable = [
         'name',
         'slug',
+        'image',
     ];
 
-    public function sluggable()
+    public function getCreatedAtAttribute()
     {
-        return [
-            'slug' => ['source' => 'name']
-        ];
+        return \Carbon\Carbon::parse($this->attributes['created_at'])->translatedFormat('l, d F Y');
     }
 
-    public function plants()
+    public function getUpdatedAtAttribute()
     {
-        return $this->hasMany(Plant::class);
+        return \Carbon\Carbon::parse($this->attributes['updated_at'])->diffForHumans();
+    }
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'name'
+            ]
+        ];
     }
 }
