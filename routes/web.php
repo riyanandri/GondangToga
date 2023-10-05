@@ -1,9 +1,6 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Livewire\Category;
-use App\Livewire\Category\Store;
-use App\Livewire\Category\Update;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,14 +19,24 @@ Route::get('/', function () {
 })->name('home');
 
 Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
-    Route::get('/categories', Category::class)->name('categories.index');
-    Route::get('/categories/create', Store::class)->name('categories.create');
-    Route::get('/categories/{id}/edit', Update::class)->name('categories.edit');
-});
+    // dasbor
+    Route::get('/dashboard', \App\Http\Livewire\Dashboard::class)->name('dashboard');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    // categories
+    Route::get('/categories', \App\Http\Livewire\Category::class)->name('categories.index');
+    Route::get('/categories/create', \App\Http\Livewire\Category\Store::class)->name('categories.create');
+    Route::get('/categories/{id}/edit', \App\Http\Livewire\Category\Update::class)->name('categories.edit');
+
+    // plants
+    Route::get('/plants', \App\Http\Livewire\Plant::class)->name('plants.index');
+    Route::get('/plants/create', \App\Http\Livewire\Plant\Store::class)->name('plants.create');
+    Route::get('/plants/{id}/edit', \App\Http\Livewire\Plant\Update::class)->name('plants.edit');
+
+    // contents
+    Route::get('/contents', \App\Http\Livewire\Article::class)->name('contents.index');
+    Route::get('/contents/create', \App\Http\Livewire\Article\Store::class)->name('contents.create');
+    Route::get('/contents/{id}/edit', \App\Http\Livewire\Article\Update::class)->name('contents.edit');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -39,7 +39,7 @@
                         @csrf
                         <div>
                             <div
-                                class="relative before:absolute before:bottom-0 before:h-0.5 before:left-0 before:origin-right focus-within:before:origin-left before:right-0 before:scale-x-0 before:m-auto before:bg-sky-400 focus-within:before:!scale-x-100 focus-within:invalid:before:bg-red-400 before:transition before:duration-300">
+                                class="relative before:absolute before:bottom-0 before:h-0.5 before:left-0 before:origin-right focus-within:before:origin-left before:right-0 before:scale-x-0 before:m-auto before:bg-green-500 focus-within:before:!scale-x-100 focus-within:invalid:before:bg-red-400 before:transition before:duration-300">
                                 <input id="email" type="email" name="email" placeholder="Alamat Email"
                                     :value="old('email')"
                                     class="w-full bg-transparent pb-3  border-b border-gray-600 placeholder-gray-300 border-0 focus:ring-0  invalid:border-red-400 transition">
@@ -51,7 +51,7 @@
 
                         <div class="flex flex-col items-end">
                             <div
-                                class="w-full relative before:absolute before:bottom-0 before:h-0.5 before:left-0 before:origin-right focus-within:before:origin-left before:right-0 before:scale-x-0 before:m-auto before:bg-sky-400 focus-within:before:!scale-x-100 focus-within:invalid:before:bg-red-400 before:transition before:duration-300">
+                                class="w-full relative before:absolute before:bottom-0 before:h-0.5 before:left-0 before:origin-right focus-within:before:origin-left before:right-0 before:scale-x-0 before:m-auto before:bg-green-500 focus-within:before:!scale-x-100 focus-within:invalid:before:bg-red-400 before:transition before:duration-300">
                                 <input id="password" type="password" name="password" placeholder="Kata Sandi"
                                     class="w-full bg-transparent pb-3  border-b border-gray-600 placeholder-gray-300 border-0 focus:ring-0  invalid:border-red-400 transition">
                                 @error('password')
@@ -59,13 +59,13 @@
                                 @enderror
                             </div>
                             <button type="reset" class="-mr-3 w-max p-3">
-                                <span class="text-sm tracking-wide text-sky-600">Lupa kata sandi?</span>
+                                <span class="text-sm tracking-wide text-green-500">Lupa kata sandi?</span>
                             </button>
                         </div>
 
                         <div>
                             <button type="submit"
-                                class="w-full rounded-full bg-sky-500 h-11 flex items-center justify-center px-6 py-3 transition hover:bg-sky-600 focus:bg-sky-600 active:bg-sky-800">
+                                class="w-full rounded-full bg-green-500 h-11 flex items-center justify-center px-6 py-3 transition hover:bg-green-700 focus:bg-green-800 active:bg-green-800">
                                 <span class="text-base font-semibold text-white">Login</span>
                             </button>
                             {{-- <button href="#" type="reset" class="-ml-3 w-max p-3">

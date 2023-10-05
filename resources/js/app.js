@@ -1,8 +1,7 @@
-import {
-    Livewire,
-    Alpine,
-} from "../../vendor/livewire/livewire/dist/livewire.esm";
+import "./bootstrap";
 
-Alpine.plugin(Clipboard);
+import Alpine from "alpinejs";
 
-Livewire.start();
+window.Alpine = Alpine;
+
+Alpine.start();

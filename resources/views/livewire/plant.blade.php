@@ -17,9 +17,9 @@
             @endif
         </div>
         <div class="w-full flex justify-between px-2 mt-2">
-            <a href="/admin/categories/create" wire:navigate
+            <a href="/admin/plants/create" wire:navigate
                 class="bg-gray-600 hover:bg-black text-white font-light py-1 px-4 rounded">
-                Tambah Kategori
+                Tambah Tanaman
             </a>
             <div class="w-full sm:w-64 inline-block relative ">
                 <input type="search"
@@ -39,25 +39,27 @@
             <table class="table-auto border-collapse w-full">
                 <thead>
                     <tr class="rounded-lg text-sm font-medium text-gray-700 text-left" style="font-size: 0.9674rem">
-                        <th class="px-4 py-2 " style="background-color:#f8f8f8">Nama Kategori</th>
+                        <th class="px-4 py-2 " style="background-color:#f8f8f8">Nama Tanaman</th>
+                        <th class="px-4 py-2 " style="background-color:#f8f8f8">Nama Latin</th>
+                        <th class="px-4 py-2 " style="background-color:#f8f8f8">Kategori</th>
                         <th class="px-4 py-2 " style="background-color:#f8f8f8">Gambar</th>
-                        <th class="px-4 py-2 " style="background-color:#f8f8f8">Diunggah</th>
-                        <th class="px-4 py-2 " style="background-color:#f8f8f8">Diupdate</th>
+                        <th class="px-4 py-2 " style="background-color:#f8f8f8">Keterangan</th>
                         <th class="px-4 py-2 " style="background-color:#f8f8f8"></th>
                     </tr>
                 </thead>
                 <tbody class="text-sm font-normal text-gray-700">
-                    @forelse ($categories as $item)
+                    @forelse ($plants as $item)
                         <tr class="hover:bg-gray-100 border-b border-gray-200 py-10">
                             <td class="px-4 py-4">{{ $item->name }}</td>
+                            <td class="px-4 py-4 italic">{{ $item->latin }}</td>
+                            <td class="px-4 py-4">{{ $item->category->name }}</td>
                             <td class="px-4 py-1">
                                 <img class="h-16 object-cover object-center"
-                                    src="{{ asset('/storage/categories/' . $item->image) }}" alt="" />
+                                    src="{{ asset('/storage/plants/' . $item->image) }}" alt="" />
                             </td>
-                            <td class="px-4 py-4">{{ $item->created_at }}</td>
-                            <td class="px-4 py-4">{{ $item->updated_at }}</td>
+                            <td class="px-4 py-4">{{ $item->information }}</td>
                             <td class="px-4 py-4">
-                                <a href="/admin/categories/{{ $item->id }}/edit" wire:navigate>
+                                <a href="/admin/plants/{{ $item->id }}/edit" wire:navigate>
                                     <button
                                         class="group relative h-8 w-20 overflow-hidden rounded-lg bg-white text-sm shadow">
                                         <div
@@ -77,7 +79,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td class="text-center py-4">Data kategori tidak ditemukan!</td>
+                            <td class="text-center py-4">Data tanaman tidak ditemukan</td>
                         </tr>
                     @endforelse
                 </tbody>

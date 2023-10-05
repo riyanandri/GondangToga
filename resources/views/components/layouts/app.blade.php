@@ -36,6 +36,7 @@
             {{ $slot }}
         </div>
     </div>
+    @stack('script')
     @livewireScripts
 </body>
 

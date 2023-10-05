@@ -19,7 +19,7 @@
                             class="w-full border-transparent focus:border-transparent focus:ring-0 p-4 text-gray-600"
                             type="text">
                         <button type="button"
-                            class="ml-auto py-3 px-6 rounded-lg text-center transition bg-gradient-to-br from-green-800 to-green-100 hover:to-green-200 active:from-pink-700 focus:from-pink-600 md:px-12">
+                            class="ml-auto py-3 px-6 rounded-lg text-center transition bg-gradient-to-br from-green-700 to-green-100 hover:to-green-300 active:from-green-800 focus:from-green-800 md:px-12">
                             <span class="hidden text-white font-semibold md:block">
                                 Cari
                             </span>
