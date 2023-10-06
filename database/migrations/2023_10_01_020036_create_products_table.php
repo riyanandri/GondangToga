@@ -16,9 +16,9 @@ return new class extends Migration
             $table->unsignedBigInteger('plant_id');
             $table->string('name');
             $table->string('slug');
-            $table->string('image')->nullable();
-            $table->text('description')->nullable();
-            $table->foreign('plant_id')->references('id')->on('plants')->onDelete('cascade');
+            $table->string('image');
+            $table->longText('description')->nullable();
+            $table->foreign('plant_id')->references('id')->on('plants');
             $table->timestamps();
         });
     }

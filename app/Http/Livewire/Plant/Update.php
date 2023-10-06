@@ -15,6 +15,7 @@ class Update extends Component
     public $name;
     public $latin;
     public $image;
+    public $hero;
     public $information;
 
     public function mount($id)
@@ -39,14 +40,16 @@ class Update extends Component
 
         $plant = Plant::findOrFail($this->plantId);
 
-        if ($this->image) {
+        if ($this->image && $this->hero) {
             $this->image->storeAs('public/plants/', $this->image->hashName());
+            $this->hero->storeAs('public/backgrounds/', $this->hero->hashName());
             $plant->update([
                 'category_id' => $this->category_id,
                 'name' => $this->name,
                 'slug' => SlugService::createSlug(Plant::class, 'slug', $this->name),
                 'latin' => $this->latin,
                 'image' => $this->image->hashName(),
+                'hero' => $this->hero->hashName(),
                 'information' => $this->information??null
             ]);
         } else {

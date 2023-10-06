@@ -10,6 +10,7 @@
                         <span class="px-1 text-md text-gray-600">Nama Tanaman</span>
                         <select wire:model.defer="plant_id"
                             class="text-md mt-2 block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md focus:bg-white focus:border-transparent focus:ring-0">
+                            <option>Pilih Tanaman</option>
                             @foreach ($plants as $item)
                                 <option value="{{ $item->id }}">{{ $item->name }}</option>
                             @endforeach
@@ -28,7 +29,7 @@
                     <span class="px-1 text-md text-gray-600">Konten</span>
                     <textarea id="content"></textarea>
                 </div>
-                <button type="submit" wire:click
+                <button type="submit"
                     class="mt-3 text-md font-medium bg-gray-600 text-white rounded-lg px-6 py-2 block shadow-xl hover:text-white hover:bg-black">
                     Simpan
                 </button>

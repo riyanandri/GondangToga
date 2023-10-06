@@ -26,6 +26,12 @@ class CategorySeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'name' => 'Kapulaga',
+                'slug' => 'kapulaga',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ]);
     }
 }

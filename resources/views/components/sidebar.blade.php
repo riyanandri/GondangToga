@@ -7,6 +7,15 @@
             </a>
         </div>
 
+        <div class="mt-8 text-center">
+            <img src="{{ asset('/storage/profile/' . Auth::user()->photo) }}" alt="profil"
+                class="m-auto h-10 w-10 rounded-full object-cover lg:h-28 lg:w-28" />
+            <h5 class="mt-4 hidden text-xl font-semibold text-gray-600 lg:block">
+                {{ Auth::user()->name }}
+            </h5>
+            <span class="hidden text-gray-400 lg:block">Admin</span>
+        </div>
+
         <ul class="mt-8 space-y-2 tracking-wide">
             <li>
                 <a href="{{ route('dashboard') }}" aria-label="dashboard"
@@ -60,8 +69,9 @@
                     <span class="group-hover:text-gray-700">Konten</span>
                 </a>
             </li>
-            {{-- <li>
-                <a href="#" class="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600">
+            <li>
+                <a href="{{ route('spots.index') }}"
+                    class="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                         <path class="fill-current text-gray-300 group-hover:text-cyan-300"
                             d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
@@ -69,9 +79,9 @@
                             d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z"
                             clip-rule="evenodd" />
                     </svg>
-                    <span class="group-hover:text-gray-700">Finance</span>
+                    <span class="group-hover:text-gray-700">Lokasi</span>
                 </a>
-            </li> --}}
+            </li>
         </ul>
     </div>
 

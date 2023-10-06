@@ -19,7 +19,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 
     @stack('style')
-
+    <style>
+        #map {
+            height: 20vw;
+        }
+    </style>
     <!-- Scripts -->
     @livewireStyles
     @vite(['resources/css/app.css', 'resources/js/app.js'])

@@ -18,7 +18,10 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Admin GondangToga',
                 'email' => 'gondangtoga@admin.com',
-                'password' => Hash::make('admin123'),
+                'password' => Hash::make('gondangtoga@123'),
+                'photo' => 'admin.png',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
         ]);
     }

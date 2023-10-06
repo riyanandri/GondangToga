@@ -14,6 +14,7 @@ class Store extends Component
     public $name;
     public $latin;
     public $image;
+    public $hero;
     public $information;
 
     public function store()
@@ -21,11 +22,13 @@ class Store extends Component
         $rules = [
             'name' => ['required', 'string', 'unique:plants,name', 'min:3'],
             'latin' => ['required', 'string', 'unique:plants,latin', 'min:3'],
-            'image' => ['required', 'image', 'max:5120'],
+            'image' => ['required', 'image', 'max:2048'],
+            'hero' => ['required', 'image', 'max:5120']
         ];
 
         $this->validate($rules);
         $this->image->storeAs('public/plants/', $this->image->hashName());
+        $this->hero->storeAs('public/backgrounds/', $this->hero->hashName());
 
         Plant::create([
             'category_id' => $this->category_id,
@@ -33,6 +36,7 @@ class Store extends Component
             'slug' => SlugService::createSlug(Plant::class, 'slug', $this->name),
             'latin' => $this->latin,
             'image' => $this->image->hashName(),
+            'hero' => $this->hero->hashName(),
             'information' => $this->information??null
         ]);
 

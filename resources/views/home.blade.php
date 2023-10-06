@@ -92,24 +92,9 @@
         </div>
     </div>
 
-
     <div class="bg-gradient-to-b from-gray-800 to-gray-100 py-16">
         <div class="xl:container m-auto px-6 text-gray-600 md:px-12 xl:px-16">
-            <div
-                class="lg:bg-gray-50 dark:lg:bg-darker lg:p-16 rounded-[4rem] space-y-6 md:flex flex-row-reverse md:gap-6 justify-center md:space-y-0 lg:items-center">
-                <div class="md:5/12 lg:w-1/2">
-                    <img src="images/pie.svg" alt="image" loading="lazy" width="" height="" />
-                </div>
-                <div class="md:7/12 lg:w-1/2">
-                    <h2 class="text-3xl font-bold text-gray-900 md:text-4xl dark:text-black">
-                        Pemetaan
-                    </h2>
-                    <p class="my-8 text-gray-600 dark:text-gray-300">
-                        Nobis minus voluptatibus pariatur dignissimos libero quaerat iure expedita at?
-                        Asperiores nemo possimus nesciunt dicta veniam aspernatur quam mollitia.
-                    </p>
-                </div>
-            </div>
+            <div id="map"></div>
         </div>
     </div>
 @endsection

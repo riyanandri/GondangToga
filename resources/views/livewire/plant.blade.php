@@ -79,7 +79,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td class="text-center py-4">Data tanaman tidak ditemukan</td>
+                            <td colspan="5" class="text-center py-4">Data tanaman tidak ditemukan!</td>
                         </tr>
                     @endforelse
                 </tbody>

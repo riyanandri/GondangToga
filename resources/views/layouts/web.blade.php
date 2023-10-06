@@ -13,11 +13,15 @@
     <link href="https://fonts.bunny.net/css?family=poppins:400,500,600&display=swap" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-
-    @stack('style')
-
-    <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="stylesheet" href="{{ asset('assets/leaflet/leaflet.css') }}" />
+    <style>
+        #map {
+            height: 30vw;
+        }
+    </style>
+</head>
+<!-- Scripts -->
+@vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="font-sans antialiased">
@@ -56,7 +60,25 @@
         })
     </script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-    @stack('script')
+    <script src="{{ asset('assets/leaflet/leaflet.js') }}"></script>
+    <script>
+        const map = L.map('map').setView([-7.477508796537083, 110.24344403496698], 11);
+
+        const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+        var markerIcon = L.icon({
+            iconUrl: '{{ asset('assets/leaflet/images/marker.png') }}',
+            iconSize: [50, 50]
+        });
+
+        var marker = L.marker([-7.477508796537083, 110.24344403496698], {
+            icon: markerIcon,
+            draggable: true
+        }).bindPopup('Lokasi').addTo(map);
+    </script>
 </body>
 
 </html>

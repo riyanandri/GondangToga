@@ -29,7 +29,7 @@ class Store extends Component
         ]);
 
         session()->flash('message', 'Data kategori berhasil ditambahkan.');
-        
+    
         return redirect()->route('categories.index');
     }
 

@@ -19,6 +19,7 @@ class Plant extends Model
         'name',
         'slug',
         'latin',
+        'hero',
         'image',
         'information'
     ];
@@ -36,6 +37,11 @@ class Plant extends Model
     public function article()
     {
         return $this->hasMany(Article::class);
+    }
+
+    public function spot()
+    {
+        return $this->hasOne(Spot::class);
     }
 
     public function getCreatedAtAttribute()

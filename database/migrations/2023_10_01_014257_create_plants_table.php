@@ -17,9 +17,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug');
             $table->string('latin')->unique();
+            $table->string('hero');
             $table->string('image');
             $table->string('information')->nullable();
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();
         });
     }

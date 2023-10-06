@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('articles', function (Blueprint $table) {
+        Schema::create('spots', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('plant_id');
-            $table->string('title');
-            $table->longText('content');
+            $table->string('coordinate');
+            $table->text('description')->nullable();
             $table->foreign('plant_id')->references('id')->on('plants');
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('articles');
+        Schema::dropIfExists('centre_points');
     }
 };

@@ -36,6 +36,11 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
     Route::get('/contents', \App\Http\Livewire\Article::class)->name('contents.index');
     Route::get('/contents/create', \App\Http\Livewire\Article\Store::class)->name('contents.create');
     Route::get('/contents/{id}/edit', \App\Http\Livewire\Article\Update::class)->name('contents.edit');
+
+    // spots
+    Route::get('/spots', \App\Http\Livewire\Spot::class)->name('spots.index');
+    Route::get('/spots/create', \App\Http\Livewire\Spot\Store::class)->name('spots.create');
+    Route::get('/spots/{id}/edit', \App\Http\Livewire\Spot\Update::class)->name('spots.edit');
 });
 
 Route::middleware('auth')->group(function () {
