@@ -8,6 +8,7 @@ class Plant extends Component
 {
     public $search;
     protected $queryString = ['search'=> ['except' => '']];
+    public $limitPerPage = 5;
 
     public function destroy($id)
     {
@@ -20,13 +21,13 @@ class Plant extends Component
 
     public function render()
     {
-        $plants = \App\Models\Plant::with('category')->latest()->get();
+        $plants = \App\Models\Plant::with('category')->orderBy('name', 'ASC')->paginate($this->limitPerPage);
 
         if ($this->search !== null) {
             $plants = \App\Models\Plant::whereHas('category', function ($query){
                 return $query->where('plants.name','like', '%' . $this->search . '%')
                                 ->orWhere('plants.latin','like', '%' . $this->search . '%');
-            })->latest()->get();
+            })->orderBy('plants.name', 'ASC')->paginate($this->limitPerPage);
         }
 
         return view('livewire.plant', ['plants' => $plants]);

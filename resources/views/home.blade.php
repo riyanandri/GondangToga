@@ -1,8 +1,9 @@
-@extends('layouts.web')
-
-@section('content')
+@push('style')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="{{ asset('assets/leaflet/leaflet.css') }}" />
+@endpush
+<div>
     <div class="relative">
-
         <img class="absolute inset-0 w-full h-full object-cover object-top" src="{{ asset('assets/img/background.jpg') }}"
             width="400" height="500" alt="hero background image">
         <div aria-hidden="true" class="absolute inset-0 w-full h-full bg-purple-900 bg-opacity-30 backdrop-blur-sm">
@@ -19,7 +20,7 @@
                             class="w-full border-transparent focus:border-transparent focus:ring-0 p-4 text-gray-600"
                             type="text">
                         <button type="button"
-                            class="ml-auto py-3 px-6 rounded-lg text-center transition bg-gradient-to-br from-green-700 to-green-100 hover:to-green-300 active:from-green-800 focus:from-green-800 md:px-12">
+                            class="ml-auto py-3 px-6 rounded-lg text-center transition bg-green-500 hover:bg-green-700 active:bg-green-800 focus:bg-green-800 md:px-12">
                             <span class="hidden text-white font-semibold md:block">
                                 Cari
                             </span>
@@ -61,8 +62,89 @@
                     We don't like to brag, but we don't mind letting our customers do it for us. <br />
                     Here are a few nice things folks have said about our themes over the years.
                 </p>
-                <div id="map"></div>
+                <div wire:ignore id="map"></div>
             </div>
         </div>
     </div>
-@endsection
+</div>
+
+@push('script')
+    <script>
+        window.addEventListener('scroll', e => {
+            const header = document.querySelector('#header_')
+            e.preventDefault()
+            header.classList.toggle('sticky-nav', window.scrollY > 0);
+        })
+
+        const toggleMobileMenu = document.querySelector('#hamburger')
+        const navbar = document.querySelector('#navbar')
+
+        toggleMobileMenu.addEventListener('click', e => {
+            e.preventDefault()
+            toggleMobileMenu.querySelector('#line').classList.toggle('rotate-45')
+            toggleMobileMenu.querySelector('#line').classList.toggle('translate-y-1.5')
+
+            toggleMobileMenu.querySelector('#line2').classList.toggle('-rotate-45')
+            toggleMobileMenu.querySelector('#line2').classList.toggle('-translate-y-1')
+            if (navbar.clientHeight === 0) {
+                navbar.style.paddingTop = '20px'
+                navbar.style.paddingBottom = '20px'
+                navbar.style.height = `${parseInt(navbar.scrollHeight) + 60}px`
+                return
+            }
+            navbar.style.height = '0px'
+            navbar.style.paddingTop = '0px'
+            navbar.style.paddingBottom = '0px'
+        })
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="{{ asset('assets/leaflet/leaflet.js') }}"></script>
+    <script>
+        var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        });
+
+        var Stadia_Dark = L.tileLayer(
+            'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.{ext}', {
+                minZoom: 0,
+                maxZoom: 20,
+                attribution: '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                ext: 'png'
+            });
+
+        var Esri_WorldStreetMap = L.tileLayer(
+            'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+                attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
+            });
+
+        var markerIcon = L.icon({
+            iconUrl: '{{ asset('assets/leaflet/images/marker.png') }}',
+            iconSize: [25, 40]
+        });
+
+        var map = L.map('map', {
+            center: [-7.522348405831862, 110.13889859262459],
+            zoom: 15,
+            layers: [osm]
+        })
+
+        var baseMaps = {
+            'Open Street Map': osm,
+            'Stadia Dark': Stadia_Dark,
+            'Esri Map': Esri_WorldStreetMap
+        }
+
+        @foreach ($spots as $spot)
+            L.marker([{{ $spot->coordinate }}], {
+                icon: markerIcon,
+            }).bindPopup(
+                "<div class='my-1'><img class='w-16 h-14' src='{{ asset('/storage/plants/' . $spot->plant->image) }}' /></div>" +
+                "<div class='my-1'><strong>{{ $spot->plant->name }}</strong></div>" +
+                "<div class='my-1'><a class='mt-3 bg-gray-200 rounded-sm px-1 py-1 text-xs text-green-500 border-gray-400 border-1 hover:text-white hover:shadow-[inset_13rem_0_0_0] hover:shadow-green-500 duration-[400ms,700ms] transition-[color,box-shadow]' href=''>Lihat detail</a></div>"
+            ).addTo(map);
+        @endforeach
+
+        const layerControl = L.control.layers(baseMaps).addTo(map);
+    </script>
+@endpush

@@ -1,3 +1,6 @@
+@section('nav-title')
+    Tambah Data Tanaman
+@endsection
 <div class="bg-white pb-4 px-4 rounded-md w-full">
     <div class="overflow-x-auto mt-6">
         <form wire:submit.prevent="store" enctype="multipart/form-data">

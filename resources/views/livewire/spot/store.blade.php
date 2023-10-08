@@ -1,6 +1,9 @@
 @push('style')
     <link rel="stylesheet" href="{{ asset('assets/leaflet/leaflet.css') }}" />
 @endpush
+@section('nav-title')
+    Tambah Data Lokasi
+@endsection
 <div class="grid gap-6 md:grid-cols-1 lg:grid-cols-2">
     <div wire:ignore
         class="h-full space-y-6 group p-6 sm:p-8 rounded-3xl bg-white border border-gray-200/50 bg-opacity-50 shadow-md shadow-gray-600/10">
@@ -47,7 +50,7 @@
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="{{ asset('assets/leaflet/leaflet.js') }}"></script>
     <script>
-        const map = L.map('map').setView([-7.477508796537083, 110.24344403496698], 11);
+        const map = L.map('map').setView([-7.522348405831862, 110.13889859262459], 14);
 
         const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
@@ -56,10 +59,10 @@
 
         var markerIcon = L.icon({
             iconUrl: '{{ asset('assets/leaflet/images/marker.png') }}',
-            iconSize: [50, 50]
+            iconSize: [25, 40]
         });
 
-        var marker = L.marker([-7.477508796537083, 110.24344403496698], {
+        var marker = L.marker([-7.522145593857628, 110.13850691328653], {
             icon: markerIcon,
             draggable: true
         }).addTo(map);

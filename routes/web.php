@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PlantController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +16,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+// home
+Route::get('/', \App\Http\Livewire\Front\Home::class)->name('home');
+
+// plants
+Route::get('/plants', \App\Http\Livewire\Front\Plant::class)->name('plants');
+
+// products
+Route::get('/products', \App\Http\Livewire\Front\Product::class)->name('products');
+
+// about us
+Route::get('/about-us', \App\Http\Livewire\Front\AboutUs::class)->name('about-us');
 
 Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
     // dasbor

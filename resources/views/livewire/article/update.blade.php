@@ -1,6 +1,9 @@
 @push('style')
     <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
 @endpush
+@section('nav-title')
+    Edit Data Konten
+@endsection
 <div class="bg-white pb-4 px-4 rounded-md w-full">
     <div class="overflow-x-auto mt-6">
         <form wire:submit.prevent="update" enctype="multipart/form-data">

@@ -3,7 +3,7 @@
         <div class="container m-auto px-6 md:px-12 lg:px-6">
             <div class="flex flex-wrap items-center justify-between py-6 md:py-4 md:gap-0">
                 <div class="w-full flex items-center justify-between lg:w-auto">
-                    <a href="#" aria-label="logo">
+                    <a href="{{ route('home') }}" aria-label="logo">
                         <img src="{{ asset('assets/img/Logo-PPK-HIMAFA.png') }}" class="w-36" alt="logo"
                             width="144" height="48">
                     </a>
@@ -23,25 +23,25 @@
                     <div id="navBox"
                         class="w-full p-6 lg:p-0 bg-white bg-opacity-40 backdrop-blur-md lg:items-center flex flex-col lg:flex-row lg:bg-transparent transition-all ease-in">
                         <ul
-                            class="space-y-6 pb-6 tracking-wide font-medium text-gray-800 lg:text-gray-100 lg:pb-0 lg:pr-6 lg:items-center lg:flex lg:space-y-0">
+                            class="space-y-6 pb-6 tracking-wide font-medium text-gray-800 lg:text-green-500 lg:pb-0 lg:pr-6 lg:items-center lg:flex lg:space-y-0">
                             <li>
-                                <a href="#" class="block md:px-3">
-                                    <span>Beranda</span>
+                                <a href="{{ route('home') }}" class="block md:px-3">
+                                    <span class="drop-shadow-lg">Beranda</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="block md:px-3">
-                                    <span>Tanaman</span>
+                                <a href="{{ route('plants') }}" class="block md:px-3">
+                                    <span class="drop-shadow-lg">Tanaman</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="block md:px-3">
-                                    <span>Produk</span>
+                                <a href="{{ route('products') }}" class="block md:px-3">
+                                    <span class="drop-shadow-lg">Produk</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="block md:px-3">
-                                    <span>Profil Desa</span>
+                                <a href="{{ route('about-us') }}" class="block md:px-3">
+                                    <span class="drop-shadow-lg">Profil Desa</span>
                                 </a>
                             </li>
                         </ul>
@@ -51,20 +51,12 @@
                             <li class="flex w-full lg:max-w-max justify-center">
                                 <a href="{{ route('login') }}"><button type="button"
                                         class="flex w-full py-3 px-6 rounded-md text-center transition border border-purple-600 bg-white bg-opacity-40 backdrop-blur-md lg:backdrop-blur-none lg:bg-opacity-0 lg:bg-transparent lg:border-transparent active:border-purple-400 justify-center max-w-lg lg:max-w-max">
-                                        <span class="block text-gray-700 lg:text-white font-semibold">
+                                        <span
+                                            class="block text-gray-700 lg:text-green-500 font-semibold drop-shadow-lg">
                                             Login
                                         </span>
                                     </button></a>
                             </li>
-
-                            {{-- <li class="flex w-full lg:max-w-max justify-center">
-                            <button type="button" title="Start buying"
-                                class="flex w-full py-3  px-6 rounded-lg text-center transition bg-purple-600 lg:bg-white active:bg-purple-700 lg:active:bg-purple-200 focus:bg-purple-500 lg:focus:bg-purple-100 justify-center max-w-lg lg:max-w-max">
-                                <span class="block text-sm text-white lg:text-purple-600 font-semibold">
-                                    Sign In
-                                </span>
-                            </button>
-                        </li> --}}
                         </ul>
                     </div>
                 </div>

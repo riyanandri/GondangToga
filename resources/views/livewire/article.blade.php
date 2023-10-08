@@ -1,3 +1,6 @@
+@section('nav-title')
+    Data Konten
+@endsection
 <div>
     <!-- component -->
     <div class="bg-white pb-4 px-4 rounded-md w-full">
@@ -23,7 +26,7 @@
             </a>
             <div class="w-full sm:w-64 inline-block relative ">
                 <input type="search" wire:model="search"
-                    class="border border-gray-300 block w-full appearance-none bg-gray-100 text-sm text-gray-600 py-1 px-4 pl-8 rounded-lg"
+                    class="border border-gray-300 block w-full appearance-none focus:border-gray-600 focus:ring-0 bg-gray-100 text-sm text-gray-600 py-1 px-4 pl-8 rounded-lg"
                     placeholder="Cari data" />
 
                 <div class="pointer-events-none absolute pl-3 inset-y-0 left-0 flex items-center px-2 text-gray-300">
@@ -79,6 +82,9 @@
                     @endforelse
                 </tbody>
             </table>
+            <div class="mt-3">
+                {{ $articles->links() }}
+            </div>
         </div>
     </div>
 

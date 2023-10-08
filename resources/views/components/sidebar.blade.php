@@ -27,7 +27,7 @@
                         <path class="fill-current text-gray-600 group-hover:text-green-600" fill-rule="evenodd"
                             d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.988 7.988 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3z" />
                     </svg>
-                    <span class="group-hover:text-green-700">Dashboard</span>
+                    <span class="group-hover:text-green-700">Dasbor</span>
                 </a>
             </li>
             <li>

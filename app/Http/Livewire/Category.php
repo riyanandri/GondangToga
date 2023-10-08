@@ -8,6 +8,7 @@ class Category extends Component
 {
     public $search;
     protected $queryString = ['search'=> ['except' => '']];
+    public $limitPerPage = 5;
 
     public function destroy($id)
     {
@@ -20,11 +21,11 @@ class Category extends Component
 
     public function render()
     {
-        $categories = \App\Models\Category::latest()->get();
+        $categories = \App\Models\Category::orderBy('name', 'ASC')->paginate($this->limitPerPage);
 
         if ($this->search !== null) {
             $categories = \App\Models\Category::where('name','like', '%' . $this->search . '%')
-            ->latest()->get();
+            ->orderBy('name', 'ASC')->paginate($this->limitPerPage);
         }
 
         return view('livewire.category', ['categories' => $categories]);
