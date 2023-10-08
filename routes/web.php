@@ -32,6 +32,11 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
     Route::get('/plants/create', \App\Http\Livewire\Plant\Store::class)->name('plants.create');
     Route::get('/plants/{id}/edit', \App\Http\Livewire\Plant\Update::class)->name('plants.edit');
 
+    // products
+    Route::get('/products', \App\Http\Livewire\Product::class)->name('products.index');
+    Route::get('/products/create', \App\Http\Livewire\Product\Store::class)->name('products.create');
+    Route::get('/products/{id}/edit', \App\Http\Livewire\Product\Update::class)->name('products.edit');
+
     // contents
     Route::get('/contents', \App\Http\Livewire\Article::class)->name('contents.index');
     Route::get('/contents/create', \App\Http\Livewire\Article\Store::class)->name('contents.create');
