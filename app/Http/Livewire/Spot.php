@@ -6,6 +6,9 @@ use Livewire\Component;
 
 class Spot extends Component
 {
+    public $search;
+    protected $queryString = ['search'=> ['except' => '']];
+
     public function destroy($id)
     {
         \App\Models\Spot::destroy($id);
@@ -17,8 +20,15 @@ class Spot extends Component
 
     public function render()
     {
-        $spots = \App\Models\Spot::latest()->get();
+        $spots = \App\Models\Spot::with('plant')->latest()->get();
 
-        return view('livewire.spot', compact('spots'));
+        if ($this->search !== null) {
+            $spots = \App\Models\Spot::whereHas('plant', function ($query){
+                return $query->where('plants.name','like', '%' . $this->search . '%')
+                                ->orWhere('spots.coordinate','like', '%' . $this->search . '%');
+            })->latest()->get();
+        }
+
+        return view('livewire.spot', ['spots' => $spots]);
     }
 }

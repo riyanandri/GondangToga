@@ -6,6 +6,9 @@ use Livewire\Component;
 
 class Category extends Component
 {
+    public $search;
+    protected $queryString = ['search'=> ['except' => '']];
+
     public function destroy($id)
     {
         \App\Models\Category::destroy($id);
@@ -19,6 +22,11 @@ class Category extends Component
     {
         $categories = \App\Models\Category::latest()->get();
 
-        return view('livewire.category', compact('categories'));
+        if ($this->search !== null) {
+            $categories = \App\Models\Category::where('name','like', '%' . $this->search . '%')
+            ->latest()->get();
+        }
+
+        return view('livewire.category', ['categories' => $categories]);
     }
 }

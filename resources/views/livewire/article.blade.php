@@ -22,7 +22,7 @@
                 Tambah Konten
             </a>
             <div class="w-full sm:w-64 inline-block relative ">
-                <input type="search"
+                <input type="search" wire:model="search"
                     class="border border-gray-300 block w-full appearance-none bg-gray-100 text-sm text-gray-600 py-1 px-4 pl-8 rounded-lg"
                     placeholder="Cari data" />
 

@@ -14,6 +14,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <link rel="stylesheet" href="{{ asset('assets/leaflet/leaflet.css') }}" />
+    {{-- @stack('style') --}}
     <style>
         #map {
             height: 30vw;
@@ -61,6 +62,7 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script src="{{ asset('assets/leaflet/leaflet.js') }}"></script>
+    {{-- @stack('script') --}}
     <script>
         const map = L.map('map').setView([-7.477508796537083, 110.24344403496698], 11);
 
