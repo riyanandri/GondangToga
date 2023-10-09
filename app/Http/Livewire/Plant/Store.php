@@ -26,7 +26,24 @@ class Store extends Component
             'hero' => ['required', 'image', 'max:5120']
         ];
 
-        $this->validate($rules);
+        $messages = [
+            'name.required' => 'Kolom nama tanaman belum diisi.',
+            'name.string' => 'Kolom nama tanaman harus berupa string.',
+            'name.unique' => 'Nama tanaman sudah ada.',
+            'name.min' => 'Nama tanaman minimal 3 karakter.',
+            'latin.required' => 'Kolom nama latin tanaman belum diisi.',
+            'latin.string' => 'Kolom nama latin tanaman harus berupa string.',
+            'latin.unique' => 'Nama latin tanaman sudah ada.',
+            'latin.min' => 'Nama latin tanaman minimal 3 karakter.',
+            'image.required' => 'Kolom gambar belum diisi.',
+            'image.image' => 'Kolom gambar harus berupa jpg, jpeg, atau png.',
+            'image.max' => 'Ukuran gambar maksimal 2MB.',
+            'hero.required' => 'Kolom background belum diisi.',
+            'hero.image' => 'Kolom background harus berupa jpg, jpeg, atau png.',
+            'hero.max' => 'Ukuran background maksimal 5MB.'
+        ];
+
+        $this->validate($rules, $messages);
         $this->image->storeAs('public/plants/', $this->image->hashName());
         $this->hero->storeAs('public/backgrounds/', $this->hero->hashName());
 

@@ -28,7 +28,11 @@ class Update extends Component
             'coordinate' => ['required']
         ];
 
-        $this->validate($rules);
+        $messages = [
+            'coordinate.required' => 'Titik koordinat belum diisi.'
+        ];
+
+        $this->validate($rules, $messages);
 
         $spot = Spot::findOrFail($this->spotId);
 

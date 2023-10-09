@@ -17,7 +17,13 @@ class Store extends Component
             'title' => ['required', 'string', 'min:3'],
         ];
 
-        $this->validate($rules);
+        $messages = [
+            'title.required' => 'Kolom judul konten belum diisi.',
+            'title.string' => 'Kolom judul konten harus berupa string.',
+            'title.min' => 'Judul konten minimal 3 karakter.',
+        ];
+
+        $this->validate($rules, $messages);
 
         $data = [
             'plant_id' => $this->plant_id,

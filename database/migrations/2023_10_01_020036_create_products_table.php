@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug');
             $table->string('image');
-            $table->longText('description')->nullable();
-            $table->foreign('plant_id')->references('id')->on('plants');
+            $table->string('link')->nullable();
+            $table->foreign('plant_id')->references('id')->on('plants')->onDelete('cascade');
             $table->timestamps();
         });
     }

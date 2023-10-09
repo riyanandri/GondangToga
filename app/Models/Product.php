@@ -19,7 +19,7 @@ class Product extends Model
         'name',
         'slug',
         'image',
-        'description'
+        'link'
     ];
 
     public function plant()

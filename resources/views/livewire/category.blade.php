@@ -44,6 +44,7 @@
                     <tr class="rounded-lg text-sm font-medium text-gray-700 text-left" style="font-size: 0.9674rem">
                         <th class="px-4 py-2 " style="background-color:#f8f8f8">Nama Kategori</th>
                         <th class="px-4 py-2 " style="background-color:#f8f8f8">Gambar</th>
+                        <th class="px-4 py-2 " style="background-color:#f8f8f8">Deskripsi Singkat</th>
                         <th class="px-4 py-2 " style="background-color:#f8f8f8">Diunggah</th>
                         <th class="px-4 py-2 " style="background-color:#f8f8f8">Diupdate</th>
                         <th class="px-4 py-2 " style="background-color:#f8f8f8"></th>
@@ -57,6 +58,7 @@
                                 <img class="h-16 object-cover object-center"
                                     src="{{ asset('/storage/categories/' . $item->image) }}" alt="" />
                             </td>
+                            <td class="px-4 py-4">{{ $item->short_description }}</td>
                             <td class="px-4 py-4">{{ $item->created_at }}</td>
                             <td class="px-4 py-4">{{ $item->updated_at }}</td>
                             <td class="px-4 py-4">

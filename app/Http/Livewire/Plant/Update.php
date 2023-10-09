@@ -36,7 +36,16 @@ class Update extends Component
             'latin' => ['required', 'string', 'min:3'],
         ];
 
-        $this->validate($rules);
+        $messages = [
+            'name.required' => 'Kolom nama tanaman belum diisi.',
+            'name.string' => 'Kolom nama tanaman harus berupa string.',
+            'name.min' => 'Nama tanaman minimal 3 karakter.',
+            'latin.required' => 'Kolom nama latin tanaman belum diisi.',
+            'latin.string' => 'Kolom nama latin tanaman harus berupa string.',
+            'latin.min' => 'Nama latin tanaman minimal 3 karakter.',
+        ];
+
+        $this->validate($rules, $messages);
 
         $plant = Plant::findOrFail($this->plantId);
 

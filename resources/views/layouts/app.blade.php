@@ -21,7 +21,7 @@
     @stack('style')
     <style>
         #map {
-            height: 20vw;
+            height: 22vw;
         }
     </style>
     <!-- Scripts -->

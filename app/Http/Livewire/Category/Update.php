@@ -13,6 +13,7 @@ class Update extends Component
     public $categoryId;
     public $name;
     public $image;
+    public $short_description;
 
     public function mount($id)
     {
@@ -20,15 +21,25 @@ class Update extends Component
 
         $this->categoryId = $category->id;
         $this->name = $category->name;
+        $this->short_description = $category->short_description;
     }
 
     public function update()
     {
         $rules = [
             'name' => ['required', 'string', 'min:3'],
+            'short_description' => ['required', 'string']
         ];
 
-        $this->validate($rules);
+        $messages = [
+            'name.required' => 'Kolom nama kategori belum diisi.',
+            'name.string' => 'Kolom nama kategori harus berupa string.',
+            'name.min' => 'Nama kategori minimal 3 karakter.',
+            'short_description.required' => 'Kolom deskripsi singkat belum diisi.',
+            'short_description.string' => 'Kolom deskripsi singkat harus berupa string.'
+        ];
+
+        $this->validate($rules, $messages);
         
         $category = Category::findOrFail($this->categoryId);
 
@@ -38,11 +49,13 @@ class Update extends Component
                 'name' => $this->name,
                 'slug' => SlugService::createSlug(Category::class, 'slug', $this->name),
                 'image' => $this->image->hashName(),
+                'short_description' => $this->short_description
             ]);
         } else {
             $category->update([
                 'name' => $this->name,
                 'slug' => SlugService::createSlug(Category::class, 'slug', $this->name),
+                'short_description' => $this->short_description
             ]);
         }
 

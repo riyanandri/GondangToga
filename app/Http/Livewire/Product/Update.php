@@ -14,7 +14,7 @@ class Update extends Component
     public $plant_id;
     public $name;
     public $image;
-    public $description;
+    public $link;
 
     public function mount($id)
     {
@@ -23,7 +23,7 @@ class Update extends Component
         $this->productId = $product->id;
         $this->plant_id = $product->plant_id;
         $this->name = $product->name;
-        $this->description = $product->description;
+        $this->link = $product->link;
     }
 
     public function update()
@@ -32,7 +32,13 @@ class Update extends Component
             'name' => ['required', 'string', 'min:3']
         ];
 
-        $this->validate($rules);
+        $messages = [
+            'name.required' => 'Kolom nama produk belum diisi.',
+            'name.string' => 'Kolom nama produk harus berupa string.',
+            'name.min' => 'Nama produk minimal 3 karakter.'
+        ];
+
+        $this->validate($rules, $messages);
 
         $product = Product::findOrFail($this->productId);
 
@@ -43,14 +49,14 @@ class Update extends Component
                 'name' => $this->name,
                 'slug' => SlugService::createSlug(Product::class, 'slug', $this->name),
                 'image' => $this->image->hashName(),
-                'description' => $this->description??null
+                'link' => $this->link??null
             ]);
         } else {
             $product->update([
                 'plant_id' => $this->plant_id,
                 'name' => $this->name,
                 'slug' => SlugService::createSlug(Product::class, 'slug', $this->name),
-                'description' => $this->description??null
+                'link' => $this->link??null
             ]);
         }
         

@@ -13,7 +13,7 @@ class Store extends Component
     public $plant_id;
     public $name;
     public $image;
-    public $description;
+    public $link;
 
     public function store()
     {
@@ -22,7 +22,17 @@ class Store extends Component
             'image' => ['required', 'image', 'max:2048']
         ];
 
-        $this->validate($rules);
+        $messages = [
+            'name.required' => 'Kolom nama produk belum diisi.',
+            'name.string' => 'Kolom nama produk harus berupa string.',
+            'name.unique' => 'Nama produk sudah ada.',
+            'name.min' => 'Nama produk minimal 3 karakter.',
+            'image.required' => 'Kolom gambar belum diisi.',
+            'image.image' => 'Kolom gambar harus berupa jpg, jpeg, atau png.',
+            'image.max' => 'Ukuran gambar maksimal 2MB.'
+        ];
+
+        $this->validate($rules, $messages);
         $this->image->storeAs('public/products/', $this->image->hashName());
 
         Product::create([
@@ -30,7 +40,7 @@ class Store extends Component
             'name' => $this->name,
             'slug' => SlugService::createSlug(Product::class, 'slug', $this->name),
             'image' => $this->image->hashName(),
-            'description' => $this->description??null
+            'link' => $this->link??null
         ]);
 
         session()->flash('message', 'Data produk berhasil ditambahkan.');

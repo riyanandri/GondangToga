@@ -17,7 +17,11 @@ class Store extends Component
             'coordinate' => ['required']
         ];
 
-        $this->validate($rules);
+        $messages = [
+            'coordinate.required' => 'Titik koordinat belum diisi.'
+        ];
+
+        $this->validate($rules, $messages);
 
         Spot::create([
             'plant_id' => $this->plant_id,

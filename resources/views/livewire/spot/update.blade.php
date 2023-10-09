@@ -38,7 +38,7 @@
                     </textarea>
                 </div>
                 <button type="submit"
-                    class="mt-3 text-md font-medium bg-gray-600 text-white rounded-lg px-6 py-2 block shadow-xl hover:text-white hover:bg-black">
+                    class="mt-5 text-md font-medium bg-gray-600 text-white rounded-lg px-6 py-2 block shadow-xl hover:text-white hover:bg-black">
                     Simpan
                 </button>
             </div>
@@ -50,22 +50,48 @@
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="{{ asset('assets/leaflet/leaflet.js') }}"></script>
     <script>
-        const map = L.map('map').setView([-7.522348405831862, 110.13889859262459], 14);
-
-        const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        }).addTo(map);
+        });
+
+        var Stadia_Dark = L.tileLayer(
+            'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.{ext}', {
+                minZoom: 0,
+                maxZoom: 20,
+                attribution: '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                ext: 'png'
+            });
+
+        var Esri_WorldStreetMap = L.tileLayer(
+            'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+                attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
+            });
 
         var markerIcon = L.icon({
             iconUrl: '{{ asset('assets/leaflet/images/marker.png') }}',
             iconSize: [25, 40]
         });
 
-        var marker = L.marker([{{ $coordinate }}], {
+        var map = L.map('map', {
+            center: [-7.522348405831862, 110.13889859262459],
+            zoom: 17,
+            layers: [osm]
+        })
+
+        var baseMaps = {
+            'Open Street Map': osm,
+            'Stadia Dark': Stadia_Dark,
+            'Esri Map': Esri_WorldStreetMap
+        }
+
+        const layerControl = L.control.layers(baseMaps).addTo(map);
+
+        var marker = L.marker([-7.522145593857628, 110.13850691328653], {
             icon: markerIcon,
             draggable: true
         }).addTo(map);
+
 
         // cara pertama mendapatkan koordinat
         function onMapClick(e) {

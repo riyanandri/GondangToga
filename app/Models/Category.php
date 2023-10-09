@@ -18,6 +18,7 @@ class Category extends Model
         'name',
         'slug',
         'image',
+        'short_description'
     ];
 
     public function plant()

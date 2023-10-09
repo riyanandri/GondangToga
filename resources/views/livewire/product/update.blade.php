@@ -1,6 +1,3 @@
-@push('style')
-    <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
-@endpush
 @section('nav-title')
     Edit Data Produk
 @endsection
@@ -36,25 +33,16 @@
                         <span class="text-red-500 font-medium text-sm mt-1">{{ $message }}</span>
                     @enderror
                 </div>
-                <div class="py-3" wire:ignore>
-                    <span class="px-1 text-md text-gray-600">Deskripsi</span>
-                    <textarea id="description">{{ $description }}</textarea>
+                <div class="py-1">
+                    <span class="px-1 text-md text-gray-600">Link Toko</span>
+                    <textarea wire:model.defer="link"
+                        class="text-md mt-2 block px-3 py-2 rounded-lg w-full bg-white border-2 shadow-md border-gray-300 focus:border-gray-500 focus:bg-white focus:border-transparent focus:ring-0">{{ $link }}</textarea>
                 </div>
                 <button type="submit"
-                    class="mt-3 text-md font-medium bg-gray-600 text-white rounded-lg px-6 py-2 block shadow-xl hover:text-white hover:bg-black">
+                    class="mt-5 text-md font-medium bg-gray-600 text-white rounded-lg px-6 py-2 block shadow-xl hover:text-white hover:bg-black">
                     Perbarui
                 </button>
             </div>
         </form>
     </div>
 </div>
-@push('script')
-    <script src="https://code.jquery.com/jquery-3.7.1.slim.js"
-        integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
-    <script>
-        CKEDITOR.replace('description');
-        CKEDITOR.instances.description.on('change', function() {
-            @this.set('description', this.getData());
-        })
-    </script>
-@endpush
