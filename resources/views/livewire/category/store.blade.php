@@ -13,14 +13,6 @@
                         <span class="text-red-500 font-medium text-sm mt-1">{{ $message }}</span>
                     @enderror
                 </div>
-                <div class="py-3">
-                    <span class="px-1 text-md text-gray-600">Gambar</span>
-                    <input type="file" wire:model.defer="image"
-                        class="text-md mt-2 block px-3 py-1.5 rounded-lg w-full bg-white border-2 shadow-md focus:bg-white focus:border-transparent focus:ring-0 @if ($errors->has('image')) border-red-400 focus:border-red-500 @else border-gray-300 focus:border-gray-500 @endif">
-                    @error('image')
-                        <span class="text-red-500 font-medium text-sm mt-1">{{ $message }}</span>
-                    @enderror
-                </div>
                 <div class="py-1">
                     <span class="px-1 text-md text-gray-600">Deskripsi Singkat</span>
                     <textarea wire:model.defer="short_description"

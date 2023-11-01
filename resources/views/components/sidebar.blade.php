@@ -67,7 +67,7 @@
                     <span class="group-hover:text-green-700">Produk</span>
                 </a>
             </li>
-            <li>
+            {{-- <li>
                 <a href="{{ route('contents.index') }}"
                     class="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-body-text h-5 w-5"
@@ -77,7 +77,7 @@
                     </svg>
                     <span class="group-hover:text-green-700">Konten</span>
                 </a>
-            </li>
+            </li> --}}
             <li>
                 <a href="{{ route('spots.index') }}"
                     class="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600">

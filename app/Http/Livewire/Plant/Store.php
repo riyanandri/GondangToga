@@ -16,6 +16,7 @@ class Store extends Component
     public $image;
     public $hero;
     public $information;
+    public $content;
 
     public function store()
     {
@@ -23,7 +24,8 @@ class Store extends Component
             'name' => ['required', 'string', 'unique:plants,name', 'min:3'],
             'latin' => ['required', 'string', 'unique:plants,latin', 'min:3'],
             'image' => ['required', 'image', 'max:2048'],
-            'hero' => ['required', 'image', 'max:5120']
+            'hero' => ['required', 'image', 'max:5120'],
+            'content' => ['required']
         ];
 
         $messages = [
@@ -40,7 +42,8 @@ class Store extends Component
             'image.max' => 'Ukuran gambar maksimal 2MB.',
             'hero.required' => 'Kolom background belum diisi.',
             'hero.image' => 'Kolom background harus berupa jpg, jpeg, atau png.',
-            'hero.max' => 'Ukuran background maksimal 5MB.'
+            'hero.max' => 'Ukuran background maksimal 5MB.',
+            'content.required' => 'Konten belum diisi.'
         ];
 
         $this->validate($rules, $messages);
@@ -54,7 +57,8 @@ class Store extends Component
             'latin' => $this->latin,
             'image' => $this->image->hashName(),
             'hero' => $this->hero->hashName(),
-            'information' => $this->information??null
+            'information' => $this->information??null,
+            'content' => $this->content
         ]);
 
         session()->flash('message', 'Data tanaman berhasil ditambahkan.');

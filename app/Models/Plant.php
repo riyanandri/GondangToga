@@ -21,7 +21,8 @@ class Plant extends Model
         'latin',
         'hero',
         'image',
-        'information'
+        'information',
+        'content'
     ];
 
     public function category()
@@ -34,10 +35,10 @@ class Plant extends Model
         return $this->hasMany(Product::class);
     }
 
-    public function article()
-    {
-        return $this->hasMany(Article::class);
-    }
+    // public function article()
+    // {
+    //     return $this->hasMany(Article::class);
+    // }
 
     public function spot()
     {

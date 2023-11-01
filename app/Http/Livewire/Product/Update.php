@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Product;
 use App\Models\Product;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Storage;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class Update extends Component
@@ -26,7 +27,7 @@ class Update extends Component
         $this->link = $product->link;
     }
 
-    public function update()
+    public function update(Product $product)
     {
         $rules = [
             'name' => ['required', 'string', 'min:3']
@@ -43,6 +44,9 @@ class Update extends Component
         $product = Product::findOrFail($this->productId);
 
         if ($this->image) {
+            if ($product->image) {
+                Storage::delete('public/products/'.$product->image);
+            }
             $this->image->storeAs('public/products/', $this->image->hashName());
             $product->update([
                 'plant_id' => $this->plant_id,

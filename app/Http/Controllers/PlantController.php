@@ -2,29 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\Product;
 use App\Models\Plant;
+use App\Models\Spot;
 use Illuminate\Http\Request;
 
 class PlantController extends Controller
 {
-    public function plants()
+    public function plantDetail(Plant $plant)
     {
-        $plants = Plant::orderBy('name', 'ASC')->paginate(2);
+        $plant_id = $plant->id;
 
-        return view('plant.index', [
-            'plants' => $plants
-        ]);
-    }
+        $products = Product::where('plant_id', $plant_id)->get();
 
-    public function search(Request $request)
-    {
-        $search = $request->search;
+        $spots = Spot::where('plant_id', $plant_id)->first();
 
-        $plants = Plant::where('name', 'like', "%" . $search . "%")
-                            ->orWhere('latin', 'like', "%" . $search . "%")
-                            ->orderBy('name', 'ASC')->paginate();
-        
-        return view('plant.index', ['plants' => $plants]);
+        return view('plant-detail', ['plant' => $plant, 'products' => $products, 'spots' => $spots]);
     }
 }

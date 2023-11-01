@@ -9,10 +9,8 @@ use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class Update extends Component
 {
-    use WithFileUploads;
     public $categoryId;
     public $name;
-    public $image;
     public $short_description;
 
     public function mount($id)
@@ -24,7 +22,7 @@ class Update extends Component
         $this->short_description = $category->short_description;
     }
 
-    public function update()
+    public function update(Category $category)
     {
         $rules = [
             'name' => ['required', 'string', 'min:3'],
@@ -43,21 +41,11 @@ class Update extends Component
         
         $category = Category::findOrFail($this->categoryId);
 
-        if ($this->image) {
-            $this->image->storeAs('public/categories/', $this->image->hashName());
-            $category->update([
-                'name' => $this->name,
-                'slug' => SlugService::createSlug(Category::class, 'slug', $this->name),
-                'image' => $this->image->hashName(),
-                'short_description' => $this->short_description
-            ]);
-        } else {
-            $category->update([
-                'name' => $this->name,
-                'slug' => SlugService::createSlug(Category::class, 'slug', $this->name),
-                'short_description' => $this->short_description
-            ]);
-        }
+        $category->update([
+            'name' => $this->name,
+            'slug' => SlugService::createSlug(Category::class, 'slug', $this->name),
+            'short_description' => $this->short_description
+        ]);
 
         session()->flash('message', 'Data kategori berhasil diperbarui.');
 

@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PlantController;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 
 /*
@@ -21,6 +19,7 @@ Route::get('/', \App\Http\Livewire\Front\Home::class)->name('home');
 
 // plants
 Route::get('/plants', \App\Http\Livewire\Front\Plant::class)->name('plants');
+Route::get('/plants/{plant:slug}', [\App\Http\Controllers\PlantController::class, 'plantDetail'])->name('plants.detail');
 
 // products
 Route::get('/products', \App\Http\Livewire\Front\Product::class)->name('products');
@@ -48,9 +47,9 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
     Route::get('/products/{id}/edit', \App\Http\Livewire\Product\Update::class)->name('products.edit');
 
     // contents
-    Route::get('/contents', \App\Http\Livewire\Article::class)->name('contents.index');
-    Route::get('/contents/create', \App\Http\Livewire\Article\Store::class)->name('contents.create');
-    Route::get('/contents/{id}/edit', \App\Http\Livewire\Article\Update::class)->name('contents.edit');
+    // Route::get('/contents', \App\Http\Livewire\Article::class)->name('contents.index');
+    // Route::get('/contents/create', \App\Http\Livewire\Article\Store::class)->name('contents.create');
+    // Route::get('/contents/{id}/edit', \App\Http\Livewire\Article\Update::class)->name('contents.edit');
 
     // spots
     Route::get('/spots', \App\Http\Livewire\Spot::class)->name('spots.index');

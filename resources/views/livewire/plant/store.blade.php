@@ -1,3 +1,6 @@
+@push('style')
+    <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+@endpush
 @section('nav-title')
     Tambah Data Tanaman
 @endsection
@@ -61,6 +64,10 @@
                         @enderror
                     </div>
                 </div>
+                <div class="py-3" wire:ignore>
+                    <span class="px-1 text-md text-gray-600">Konten</span>
+                    <textarea id="content"></textarea>
+                </div>
                 <button type="submit"
                     class="mt-5 text-md font-medium bg-gray-600 text-white rounded-lg px-6 py-2 block shadow-xl hover:text-white hover:bg-black">
                     Simpan
@@ -69,3 +76,13 @@
         </form>
     </div>
 </div>
+@push('script')
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.js"
+        integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
+    <script>
+        CKEDITOR.replace('content');
+        CKEDITOR.instances.content.on('change', function() {
+            @this.set('content', this.getData());
+        })
+    </script>
+@endpush

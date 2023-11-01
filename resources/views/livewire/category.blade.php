@@ -43,7 +43,6 @@
                 <thead>
                     <tr class="rounded-lg text-sm font-medium text-gray-700 text-left" style="font-size: 0.9674rem">
                         <th class="px-4 py-2 " style="background-color:#f8f8f8">Nama Kategori</th>
-                        <th class="px-4 py-2 " style="background-color:#f8f8f8">Gambar</th>
                         <th class="px-4 py-2 " style="background-color:#f8f8f8">Deskripsi Singkat</th>
                         <th class="px-4 py-2 " style="background-color:#f8f8f8">Diunggah</th>
                         <th class="px-4 py-2 " style="background-color:#f8f8f8">Diupdate</th>
@@ -54,10 +53,10 @@
                     @forelse ($categories as $item)
                         <tr class="hover:bg-gray-100 border-b border-gray-200 py-10">
                             <td class="px-4 py-4">{{ $item->name }}</td>
-                            <td class="px-4 py-1">
+                            {{-- <td class="px-4 py-1">
                                 <img class="h-16 object-cover object-center"
                                     src="{{ asset('/storage/categories/' . $item->image) }}" alt="" />
-                            </td>
+                            </td> --}}
                             <td class="px-4 py-4">{{ $item->short_description }}</td>
                             <td class="px-4 py-4">{{ $item->created_at }}</td>
                             <td class="px-4 py-4">{{ $item->updated_at }}</td>
@@ -82,7 +81,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="5" class="text-center py-4">Data kategori tidak ditemukan!</td>
+                            <td colspan="4" class="text-center py-4">Data kategori tidak ditemukan!</td>
                         </tr>
                     @endforelse
                 </tbody>

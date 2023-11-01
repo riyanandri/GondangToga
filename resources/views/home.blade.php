@@ -2,6 +2,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <link rel="stylesheet" href="{{ asset('assets/leaflet/leaflet.css') }}" />
 @endpush
+
 <div>
     <div class="relative">
         <img class="absolute inset-0 w-full h-full object-cover object-top" src="{{ asset('assets/img/background.jpg') }}"
@@ -16,20 +17,22 @@
 
                 <form action="" class="w-full">
                     <div class="relative flex p-1 rounded-xl bg-white shadow-2xl md:p-2">
-                        <input placeholder="Silahkan ketik yang ingin anda cari di website ini"
+                        <input placeholder="Temukan tanaman yang ingin anda cari di website ini"
                             class="w-full border-transparent focus:border-transparent focus:ring-0 p-4 text-gray-600"
-                            type="text">
-                        <button type="button"
-                            class="ml-auto py-3 px-6 rounded-lg text-center transition bg-green-500 hover:bg-green-700 active:bg-green-800 focus:bg-green-800 md:px-12">
-                            <span class="hidden text-white font-semibold md:block">
-                                Cari
-                            </span>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 mx-auto text-white md:hidden"
-                                fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                                <path
-                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                            </svg>
-                        </button>
+                            type="text" disabled>
+                        <a href="{{ route('plants') }}">
+                            <button type="button"
+                                class="ml-auto py-4 px-6 rounded-lg text-center transition bg-green-500 hover:bg-green-700 active:bg-green-800 focus:bg-green-800 md:px-12">
+                                <span class="hidden text-white font-semibold md:block">
+                                    Jelajahi
+                                </span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 mx-auto text-white md:hidden"
+                                    fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                    <path
+                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                                </svg>
+                            </button>
+                        </a>
                     </div>
                 </form>
             </div>
@@ -40,11 +43,12 @@
                         Tanaman Obat Desa Growong
                     </h3>
                     <div class="mt-8 -mx-6 px-6 overflow-x-auto md:overflow-x-hidden">
-                        <p class="text-center text-lg text-gray-600 dark:text-gray-300">Lorem ipsum dolor sit amet
-                            consectetur
-                            adipisicing elit. Praesentium tempore totam quisquam eveniet dolorum facere sed obcaecati
-                            repellat, optio, dignissimos iusto error! Consequuntur a ad quo, veniam reiciendis minima
-                            vitae.</p>
+                        <p class="mx-auto text-center text-lg text-gray-200 max-w-screen-xl leading-relaxed">
+                            Desa Growong memiliki banyak tanaman obat yang memiliki potensi dari segi kesehatan, ekonomi
+                            dan pertanian sehingga memiliki banyak potensi yang dapat dikembangkan. Berdasarkan hal ini,
+                            Kelompok Tani dan Kelompok Wanita Tani Desa Growong membuat inovasi produk herbal yang
+                            berbahan tanaman obat hasil olahan Desa Growong sendiri.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -58,9 +62,11 @@
                 <h2 class="text-center text-2xl font-bold text-gray-800 md:text-4xl">
                     Peta Persebaran Tanaman.
                 </h2>
-                <p class="text-center">
-                    We don't like to brag, but we don't mind letting our customers do it for us. <br />
-                    Here are a few nice things folks have said about our themes over the years.
+                <p class="mx-auto text-center max-w-screen-lg">
+                    Desa Growong membudidayakan berbagai macam tanaman obat keluarga yang tersebar di berbagai wilayah
+                    desa Growong. Persebaran tanaman obat keluarga dapat dilihat dari peta persebaran tanaman obat
+                    keluarga. Peta persebarannya berisi mengenai titik koordinat wilayah budidaya tanaman obat keluarga
+                    yang sudah ada.
                 </p>
                 <div wire:ignore id="map"></div>
             </div>
@@ -105,14 +111,6 @@
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         });
 
-        var Stadia_Dark = L.tileLayer(
-            'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.{ext}', {
-                minZoom: 0,
-                maxZoom: 20,
-                attribution: '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-                ext: 'png'
-            });
-
         var Esri_WorldStreetMap = L.tileLayer(
             'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
                 attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
@@ -125,13 +123,12 @@
 
         var map = L.map('map', {
             center: [-7.522348405831862, 110.13889859262459],
-            zoom: 15,
+            zoom: 14,
             layers: [osm]
         })
 
         var baseMaps = {
             'Open Street Map': osm,
-            'Stadia Dark': Stadia_Dark,
             'Esri Map': Esri_WorldStreetMap
         }
 
@@ -141,7 +138,7 @@
             }).bindPopup(
                 "<div class='my-1'><img class='w-16 h-14' src='{{ asset('/storage/plants/' . $spot->plant->image) }}' /></div>" +
                 "<div class='my-1'><strong>{{ $spot->plant->name }}</strong></div>" +
-                "<div class='my-1'><a class='mt-3 bg-gray-200 rounded-sm px-1 py-1 text-xs text-green-500 border-gray-400 border-1 hover:text-white hover:shadow-[inset_13rem_0_0_0] hover:shadow-green-500 duration-[400ms,700ms] transition-[color,box-shadow]' href=''>Lihat detail</a></div>"
+                "<div class='my-1'><i>{{ $spot->plant->latin }}</i></div>"
             ).addTo(map);
         @endforeach
 

@@ -4,9 +4,10 @@
             <h2 class="text-center text-2xl font-bold text-gray-800 md:text-4xl">
                 Koleksi Tanaman.
             </h2>
-            <p class="text-center">
-                We don't like to brag, but we don't mind letting our customers do it for us. <br />
-                Here are a few nice things folks have said about our themes over the years.
+            <p class="text-center mx-auto max-w-screen-lg">
+                Desa Growong membudidayakan berbagai tanaman obat keluarga. Jenis tanaman obat keluarga tersebut
+                diklasifikasikan menjadi 4 yaitu tanaman berdasarkan akar, daun, buah dan rimpang. Lihat detail untuk
+                mendapatkan informasi selengkapnya.
             </p>
             <!-- component -->
             <div class="w-full place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible">
@@ -33,27 +34,27 @@
                 </div>
             </div>
             <!-- component -->
-            <div class="w-full flex place-items-start">
+            <div class="w-full grid grid-cols-4 gap-6 place-items-start">
                 @foreach ($plants as $item)
-                    <div class="mx-0.5 max-w-sm w-full p-4 sm:w-1/2">
-                        <div class="card flex flex-col justify-center p-8 bg-white rounded-lg shadow-lg">
-                            <div class="plant-img">
-                                <img src="{{ asset('/storage/plants/' . $item->image) }}"
-                                    class="w-full max-h-56 object-cover object-center" />
-                            </div>
-                            <div class="plant-title mt-2">
-                                <p class="text-2xl text-gray-900 font-bold">{{ $item->name }}</p>
-                                <p class="italic text-sm text-gray-400">
-                                    {{ $item->latin }}
-                                </p>
-                            </div>
-                            <div class="plant-info mt-3">
-                                <div class="flex flex-col md:flex-row justify-between items-center text-gray-900">
+                    <div class="card flex flex-col justify-center p-8 bg-white rounded-lg shadow-lg">
+                        <div class="plant-img">
+                            <img src="{{ asset('/storage/plants/' . $item->image) }}"
+                                class="h-72 w-72 object-cover object-center" />
+                        </div>
+                        <div class="plant-title mt-2">
+                            <p class="text-2xl text-gray-900 font-bold">{{ $item->name }}</p>
+                            <p class="italic text-sm text-gray-400">
+                                {{ $item->latin }}
+                            </p>
+                        </div>
+                        <div class="plant-info mt-3">
+                            <div class="flex flex-col md:flex-row justify-between items-center text-gray-900">
+                                <a href="{{ route('plants.detail', $item->slug) }}">
                                     <button
                                         class="px-4 py-1 transition ease-in duration-200 rounded-full hover:bg-gray-800 hover:text-white border-2 border-gray-900 focus:outline-none">
                                         Lihat detail
                                     </button>
-                                </div>
+                                </a>
                             </div>
                         </div>
                     </div>

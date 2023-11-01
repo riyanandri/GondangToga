@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('hero');
             $table->string('image');
             $table->string('information')->nullable();
+            $table->longText('content');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
         });

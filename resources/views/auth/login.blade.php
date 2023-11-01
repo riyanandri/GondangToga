@@ -58,9 +58,9 @@
                                     <div class="mt-2 text-sm text-red-600 space-y-1">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <button type="reset" class="-mr-3 w-max p-3">
+                            {{-- <button type="reset" class="-mr-3 w-max p-3">
                                 <span class="text-sm tracking-wide text-green-500">Lupa kata sandi?</span>
-                            </button>
+                            </button> --}}
                         </div>
 
                         <div>

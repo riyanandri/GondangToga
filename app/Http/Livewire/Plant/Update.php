@@ -3,9 +3,10 @@
 namespace App\Http\Livewire\Plant;
 
 use App\Models\Plant;
-use Cviebrock\EloquentSluggable\Services\SlugService;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Storage;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class Update extends Component
 {
@@ -17,6 +18,7 @@ class Update extends Component
     public $image;
     public $hero;
     public $information;
+    public $content;
 
     public function mount($id)
     {
@@ -27,13 +29,15 @@ class Update extends Component
         $this->name = $plant->name;
         $this->latin = $plant->latin;
         $this->information = $plant->information;
+        $this->content = $plant->content;
     }
 
-    public function update()
+    public function update(Plant $plant)
     {
         $rules = [
             'name' => ['required', 'string', 'min:3'],
             'latin' => ['required', 'string', 'min:3'],
+            'content' => ['required']
         ];
 
         $messages = [
@@ -43,6 +47,7 @@ class Update extends Component
             'latin.required' => 'Kolom nama latin tanaman belum diisi.',
             'latin.string' => 'Kolom nama latin tanaman harus berupa string.',
             'latin.min' => 'Nama latin tanaman minimal 3 karakter.',
+            'content.required' => 'Konten belum diisi.'
         ];
 
         $this->validate($rules, $messages);
@@ -50,6 +55,12 @@ class Update extends Component
         $plant = Plant::findOrFail($this->plantId);
 
         if ($this->image && $this->hero) {
+            if ($plant->image) {
+                Storage::delete('public/plants/'.$plant->image);
+            }
+            if ($plant->hero) {
+                Storage::delete('public/backgrounds/'.$plant->hero);
+            }
             $this->image->storeAs('public/plants/', $this->image->hashName());
             $this->hero->storeAs('public/backgrounds/', $this->hero->hashName());
             $plant->update([
@@ -59,7 +70,8 @@ class Update extends Component
                 'latin' => $this->latin,
                 'image' => $this->image->hashName(),
                 'hero' => $this->hero->hashName(),
-                'information' => $this->information??null
+                'information' => $this->information??null,
+                'content' => $this->content
             ]);
         } else {
             $plant->update([
@@ -67,7 +79,8 @@ class Update extends Component
                 'name' => $this->name,
                 'slug' => SlugService::createSlug(Plant::class, 'slug', $this->name),
                 'latin' => $this->latin,
-                'information' => $this->information??null
+                'information' => $this->information??null,
+                'content' => $this->content
             ]);
         }
 
